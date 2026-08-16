@@ -237,8 +237,6 @@ def get_all_internships():
             WEBSITE_URL
         )
 
-        driver.maximize_window()
-
         time.sleep(5)
 
 
