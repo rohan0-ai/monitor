@@ -9,6 +9,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+
     steps:
 
       - name: Checkout repository
