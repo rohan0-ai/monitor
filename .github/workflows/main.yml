@@ -1,0 +1,36 @@
+name: Monitor2
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  monitor:
+
+    runs-on: ubuntu-latest
+
+    env:
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Test website
+        run: |
+          echo "Testing PM Internship website..."
+          curl -I -L --max-time 30 https://pminternship.mca.gov.in/
+
+      - name: Run internship monitor
+        run: |
+          xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" python alert.py
