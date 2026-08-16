@@ -221,7 +221,7 @@ def get_all_internships():
 
     wait = WebDriverWait(
         driver,
-        20
+        60
     )
 
     try:
@@ -237,7 +237,7 @@ def get_all_internships():
             WEBSITE_URL
         )
 
-        time.sleep(5)
+        time.sleep(20)
 
 
         # =================================================
