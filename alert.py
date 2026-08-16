@@ -239,6 +239,21 @@ def get_all_internships():
 
         time.sleep(20)
 
+        print("Page title:", driver.title)
+        print("Current URL:", driver.current_url)
+
+        print("Inputs found:", len(driver.find_elements(By.TAG_NAME, "input")))
+
+        for i, element in enumerate(driver.find_elements(By.TAG_NAME, "input")):
+            try:
+                print(
+                    f"INPUT {i}: "
+                    f"id={element.get_attribute('id')} "
+                    f"placeholder={element.get_attribute('placeholder')}"
+                )
+            except:
+                pass
+
 
         # =================================================
         # SELECT DELHI
